@@ -8,20 +8,20 @@ var configCss = require('../config').vendorCss;
 
 gulp.task('vendorJs', ['browserify'], function() {
   return gulp.src(configJs.src)
-    .pipe(newer(configJs.dest + '/' + configJs.destName))
+    .pipe(newer(configJs.dest + '/' + configJs.outputName))
     .pipe(sourcemaps.init({
       loadMaps: true
     }))
-    .pipe(concat(configJs.destName))
+    .pipe(concat(configJs.outputName))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(configJs.dest));
 });
 
 gulp.task('vendorCss', function() {
   return gulp.src(configCss.src)
-    .pipe(newer(configCss.dest + '/' + configCss.destName))
+    .pipe(newer(configCss.dest + '/' + configCss.outputName))
     .pipe(sourcemaps.init())
-    .pipe(concat(configCss.destName))
+    .pipe(concat(configCss.outputName))
     .pipe(minifyCSS())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(configCss.dest));

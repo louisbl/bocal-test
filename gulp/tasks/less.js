@@ -1,4 +1,5 @@
 var gulp         = require('gulp');
+var concat       = require('gulp-concat');
 var less         = require('gulp-less');
 var sourcemaps   = require('gulp-sourcemaps');
 var minifyCSS    = require('gulp-minify-css');
@@ -13,6 +14,7 @@ gulp.task('less', ['iconFont', 'sprite'], function() {
     .pipe(less(config.settings))
     .on('error', handleErrors)
     .pipe(autoprefixer(config.autoprefixer))
+    .pipe(concat(config.outputName))
     .pipe(minifyCSS())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(config.dest))

@@ -12,11 +12,11 @@ module.exports = {
     autoprefixer: {
       browsers: ['last 2 version']
     },
-    cssSrc: './vendor/css/*.css',
-    src: [src + '/index.less',
-      dest + '/*.less'
+    src: [dest + '/*.less',
+      src + '/index.less'
     ],
-    dest: dest
+    dest: dest,
+    outputName: 'index.css'
   },
   images: {
     src: src + '/images/**',
@@ -110,11 +110,11 @@ module.exports = {
       dest + '/plugins.js'
     ],
     dest: dest,
-    destName: 'vendor.js'
+    outputName: 'vendor.js'
   },
   vendorCss: {
     src: ['./vendor/css/*css'],
     dest: dest,
-    destName: 'vendor.css'
+    outputName: 'vendor.css'
   }
 };
