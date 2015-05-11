@@ -1,0 +1,21 @@
+appdata:
+  image: buildpack-deps:jessie
+  volumes:
+    - .:/usr/src/app
+
+app:
+  image: node:0.12.2
+  working_dir: /usr/src/app
+  command: npm start
+  ports:
+    - "3000:3000"
+    - "3001:3001"
+  volumes_from:
+    - appdata
+
+apptest:
+  image: node:0.12.2
+  working_dir: /usr/src/app
+  command: npm test
+  volumes_from:
+    - appdata
